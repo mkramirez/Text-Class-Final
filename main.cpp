@@ -1,5 +1,6 @@
 #include "Frame.h"
 #include "Image.h"
+#include "Rectangle.h"
 #include <fstream>
 
 typedef unsigned char byte;
@@ -31,15 +32,32 @@ int main(int argc, char * argv[]) {
         std::cout << "error: " << strerror(errno) << std::endl;
         return 1;
     }
+
+    std::vector<Rectangle>rect;
+
+    Rectangle r1 (45, 45, 150, 50, 0xff, 0x00, 0xff);
+    r1.setSpeed(100, 20);
+    Rectangle r2(45, 45, 200, 55, 0xff, 0x00, 0x00);
+    r2.setSpeed(40, 150);
+    Rectangle r3(45, 45, 5, 150, 0x00, 0x00, 0xff);
+    r3.setSpeed(50, 120);
+    Rectangle r4(45, 45, 30, 5, 0x00, 0xff, 0x00);
+    r4.setSpeed(100, 80);
+
+    rect.push_back(r1);
+    rect.push_back(r2);
+    rect.push_back(r3);
+    rect.push_back(r4);
+
     Image img1;
     Image img2;
     Image img3;
     img1.getX(0.0);
     img1.getY(0.0);
     img2.getX(100.0);
-    img2.getY(150.0);
+    img2.getY(155.0);
     img3.getX(200.0);
-    img3.getY(300.0);
+    img3.getY(305.0);
 
     img1.setSpeed(100, 0);
     img2.setSpeed(100, 0);
@@ -53,6 +71,11 @@ int main(int argc, char * argv[]) {
     for (int i = 0; i < num_frames; ++i) {
         double dt = 1.0 / frames_per_second;
         drawFrame.clear();
+        for (auto &j : rect) {
+            j.draw(drawFrame);
+            j.update(dt);
+        }
+
         img1.draw();
         img2.draw();
         img3.draw();
