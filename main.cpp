@@ -36,9 +36,9 @@ int main(int argc, char * argv[]) {
     Image img3;
     img1.getX(0.0);
     img1.getY(0.0);
-    img2.getX(0.0);
+    img2.getX(100.0);
     img2.getY(150.0);
-    img3.getX(0.0);
+    img3.getX(200.0);
     img3.getY(300.0);
 
     img1.setSpeed(100, 0);
