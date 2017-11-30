@@ -37,7 +37,7 @@ int main(int argc, char * argv[]) {
 
     Rectangle r1 (45, 45, 150, 50, 0xff, 0x00, 0xff);
     r1.setSpeed(100, 20);
-    Rectangle r2(45, 45, 200, 55, 0xff, 0x00, 0x00);
+    Rectangle r2(45, 45, 200, 55, 0xff, 0xff, 0x00);
     r2.setSpeed(40, 150);
     Rectangle r3(45, 45, 5, 150, 0x00, 0x00, 0xff);
     r3.setSpeed(50, 120);
@@ -72,7 +72,7 @@ int main(int argc, char * argv[]) {
         double dt = 1.0 / frames_per_second;
         drawFrame.clear();
         for (auto &j : rect) {
-            j.draw(drawFrame);
+            j.draw();
             j.update(dt);
         }
 
