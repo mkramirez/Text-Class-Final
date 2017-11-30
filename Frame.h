@@ -9,6 +9,7 @@ class Frame {
 public:
     Frame(int w, int h);
     ~Frame();
+    void blendPixel(int x, int y, byte r, byte g, byte b, byte a);
     void setPixel(int x, int y, byte r, byte g, byte b);
     void clear();
     bool isOutside(int x, int y) const;

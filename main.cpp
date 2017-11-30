@@ -1,12 +1,8 @@
 #include "Frame.h"
 #include "Image.h"
 #include "Rectangle.h"
+#include "Font.h"
 #include <fstream>
-
-typedef unsigned char byte;
-
-const double frames_per_second = 30;
-const int duration_in_seconds = 3;
 
 Frame drawFrame(720, 480);
 
@@ -82,6 +78,11 @@ int main(int argc, char * argv[]) {
         img1.update(dt);
         img2.update(dt);
         img3.update(dt);
+
+        std::stringstream elapsedSeconds;
+        elapsedSeconds << (int) (i / frames_per_second);
+
+        Font.draw(elapsedSeconds.str(), 50, 30);
 
         drawFrame.write(pipe);
     }
