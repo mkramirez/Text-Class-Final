@@ -1,7 +1,5 @@
 #include "Rectangle.h"
 
-extern Frame drawFrame;
-
 void Rectangle::setSpeed(double dx, double dy) {
     this->dx = dx;
     this->dy = dy;
@@ -11,8 +9,7 @@ void Rectangle::update(double dt) {
     x += dx*dt;
     y += dy*dt;
 }
-
-void Rectangle::draw(Frame &frame) const {
+void Rectangle::draw(Frame &frame) {
     double x0 = x;
     double x1 = x + w;
     double y0 = y;
@@ -23,4 +20,3 @@ void Rectangle::draw(Frame &frame) const {
         }
     }
 }
-

@@ -2,17 +2,15 @@
 #include <iostream>
 #include <vector>
 #include "Frame.h"
-#include "Object.h"
 
-class Rectangle : public Object {
+class Rectangle {
 public:
-    virtual void update(double dt);
-    virtual void draw(Frame &frame) const;
     Rectangle(double h, double w, double x, double y, byte r, byte g, byte b): h(h), w(w), x(x), y(y), r(r), g(g), b(b) {}
     void draw(Frame &frame);
     void setSpeed(double dx, double dy);
-
+    void update(double dt);
 private:
     byte r, g, b;
     double h, w, x, y, dx, dy;
+
 };
