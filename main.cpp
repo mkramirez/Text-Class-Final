@@ -63,6 +63,20 @@ int main(int argc, char * argv[]) {
     img2.load("Spongebob2.png", 150, 150);
     img3.load("Spongebob3.png", 150, 150);
 
+    Font drawFont;
+
+    int num_frames = duration_in_seconds * frames_per_second;
+    for (int i = 0; i < num_frames; ++i) {
+        drawFrame.clear();
+
+        std::stringstream elapsedSeconds;
+        elapsedSeconds << (int) (i / frames_per_second);
+
+        drawFont.draw(elapsedSeconds.str(), 50, 30);
+
+        drawFrame.write(pipe);
+    }
+    /*
     int num_frames = duration_in_seconds * frames_per_second;
     for (int i = 0; i < num_frames; ++i) {
         double dt = 1.0 / frames_per_second;
@@ -79,13 +93,9 @@ int main(int argc, char * argv[]) {
         img2.update(dt);
         img3.update(dt);
 
-        std::stringstream elapsedSeconds;
-        elapsedSeconds << (int) (i / frames_per_second);
-
-        Font.draw(elapsedSeconds.str(), 50, 30);
-
         drawFrame.write(pipe);
     }
+     */
 
     fflush(pipe);
     pclose(pipe);
