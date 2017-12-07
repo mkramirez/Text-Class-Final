@@ -1,12 +1,10 @@
 #pragma once
-
 #include <cstdio>
 #include <cstring>
 #include <iostream>
 #include <sstream>
 #include "Object.h"
-
-typedef unsigned char byte;
+#include "Global.h"
 
 class Image : public Object {
 public:

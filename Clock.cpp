@@ -3,24 +3,21 @@
 #include "Font.h"
 
 extern Frame drawFrame;
+extern Font drawFont;
 
-Font drawFont;
-
-using namespace std;
-
-Clock::Clock(int x, int y){
+Clock::Clock(double x, double y){
     this->x = x;
     this->y = y;
-    elapsedSeconds = 0;
+    timer = 0;
 }
 
 void Clock::draw() const{
-    stringstream ss;
-    ss << (int)elapsedSeconds;
-    string s = ss.str();
-    drawFont.draw(ss.str(), 17, 20);
+    std::stringstream ss;
+    ss << (int)timer;
+    std::string s = ss.str();
+    drawFont.draw(s, 50, 30);
 }
 
 void Clock::update(double dt){
-    elapsedSeconds = elapsedSeconds + dt;
+    timer = timer + dt;
 }

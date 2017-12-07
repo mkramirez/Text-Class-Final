@@ -3,9 +3,7 @@
 #include <iostream>
 #include "Font.h"
 
-
 extern Frame drawFrame;
-
 
 Font::Font() : w(384), h(384) {
     pixels = new byte[w * h * 3];

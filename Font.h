@@ -10,7 +10,6 @@ public:
     ~Font() {delete [] pixels; }
     void draw(const std::string & text, double x, double y) const;
 
-
 private:
     byte * pixels;
     int w;
