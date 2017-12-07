@@ -3,6 +3,8 @@
 #include "Rectangle.h"
 #include "Font.h"
 #include <fstream>
+#include "Clock.h"
+#include "Global.h"
 
 Frame drawFrame(720, 480);
 
@@ -44,6 +46,8 @@ int main(int argc, char * argv[]) {
     rect.push_back(r2);
     rect.push_back(r3);
     rect.push_back(r4);
+    //objects push back r1 vector<object *> objects;
+    //objects[i]->draw();
 
     Image img1;
     Image img2;
@@ -63,20 +67,8 @@ int main(int argc, char * argv[]) {
     img2.load("Spongebob2.png", 150, 150);
     img3.load("Spongebob3.png", 150, 150);
 
-    Font drawFont;
+    Clock clock(20,30);
 
-    int num_frames = duration_in_seconds * frames_per_second;
-    for (int i = 0; i < num_frames; ++i) {
-        drawFrame.clear();
-
-        std::stringstream elapsedSeconds;
-        elapsedSeconds << (int) (i / frames_per_second);
-
-        drawFont.draw(elapsedSeconds.str(), 50, 30);
-
-        drawFrame.write(pipe);
-    }
-    /*
     int num_frames = duration_in_seconds * frames_per_second;
     for (int i = 0; i < num_frames; ++i) {
         double dt = 1.0 / frames_per_second;
@@ -93,9 +85,11 @@ int main(int argc, char * argv[]) {
         img2.update(dt);
         img3.update(dt);
 
+        clock.update(dt);
+        clock.draw();
+
         drawFrame.write(pipe);
     }
-     */
 
     fflush(pipe);
     pclose(pipe);
