@@ -52,7 +52,7 @@ int Engine::run() {
         std::cout << "error: " << strerror(errno) << std::endl;
         return 1;
     }
-    Clock clock(20, 30);
+
     auto num_frames = duration_in_seconds * frames_per_second;
     for (int i = 0; i < num_frames; ++i) {
         double dt = 1.0 / frames_per_second;
@@ -61,8 +61,6 @@ int Engine::run() {
             object->update(dt);
             object->draw();
         }
-        clock.update(dt);
-        clock.draw();
         drawFrame.write(pipe);
     }
 

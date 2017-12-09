@@ -8,7 +8,7 @@
 extern Frame drawFrame;
 
 StartObject::StartObject() {
-    Clock clock(20,30);
+    auto * clock = new Clock(20,30);
     auto * r1 = new Rectangle(45, 45, 150, 50, 0xff, 0x00, 0xff);
     auto * r2 = new Rectangle(45, 45, 200, 55, 0xff, 0xff, 0x00);
     auto * r3 = new Rectangle(45, 45, 5, 150, 0x00, 0x00, 0xff);
@@ -33,6 +33,8 @@ StartObject::StartObject() {
     rectangles.push_back(r2);
     rectangles.push_back(r3);
     rectangles.push_back(r4);
+    clocks.push_back(clock);
+
     for (int i = 0; i < clocks.size(); ++i) {
         Engine::addObject(clocks[i]);
     }
